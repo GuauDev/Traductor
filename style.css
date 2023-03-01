@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 body{
-    background-color: rgba(3, 72, 72, 0.999999);
+    background-color: rgb(38 45 45 / 100%);
 }
 
 body #container{
