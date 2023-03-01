@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: rgba(3, 72, 72, 0.999999);
+}
+
+body #container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    gap: 20px;
+}
+
+body #idiomas{
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+body #idiomas select{
+    border-radius: 10px;
+    height: 50px;
+    width: 200px;
+    color: rgba(58, 25, 25, 0.616);
+    font-size: 1.1rem;
+    font-family: sans-serif;
+}
+body #textos textarea{
+    border-radius: 10px;
+    padding: 10px;
+    font-family: sans-serif;
+    color: rgb(53, 44, 44);
+    outline: none;
+    font-size: 1.3rem;
+}
