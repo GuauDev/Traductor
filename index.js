@@ -29,8 +29,8 @@ fetch('https://text-translator2.p.rapidapi.com/getLanguages', options)
 //traducir
 let lastText = ''
 function update() {
-	if (lastText != textoDesde.value) {
-		lastText = textoDesde.value;
+	if (lastText != fromTextArea.value) {
+		lastText = fromTextArea.value;
 		translate()
 	}
 }
