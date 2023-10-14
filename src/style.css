@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: rgb(38 45 45 / 100%);
+}
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 20px;
+}
+
+.traduccion{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.traduccion select{
+    border-radius: 10px;
+    height: 50px;
+    width: 100%;
+    color: rgba(58, 25, 25, 0.616);
+    font-size: 1.1rem;
+    font-family: sans-serif;
+}
+.traduccion textarea{
+    border-radius: 10px;
+    padding: 10px;
+    font-family: sans-serif;
+    color: rgb(53, 44, 44);
+    outline: none;
+    font-size: 1.3rem;
+
+    background-color: white; 
+}
+
+
+
+

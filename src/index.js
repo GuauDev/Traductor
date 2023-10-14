@@ -19,23 +19,23 @@ fetch('https://text-translator2.p.rapidapi.com/getLanguages', options)
 	.then(response => response.data.languages.forEach(idioma => {
 		idiomaDesde.innerHTML += `<option value=${idioma.code} >${idioma.name} </option>`;
 		idiomaHasta.innerHTML += `<option value=${idioma.code} >${idioma.name} </option>`;
-	}) )
+	}))
 	.catch(err => console.error(err));
 
- 
+
 
 
 
 //traducir
 let anteriorTexto = ''
 function rectificar() {
-    if (anteriorTexto != textoDesde.value){
-        anteriorTexto = textoDesde.value;
-        traducir()
-    }
+	if (anteriorTexto != textoDesde.value) {
+		anteriorTexto = textoDesde.value;
+		traducir()
+	}
 }
 
-setInterval(rectificar, 500);
+setInterval(rectificar, 2);
 
 function traducir() {
 	const idiomaDesdeValor = idiomaDesde.value
@@ -43,7 +43,7 @@ function traducir() {
 	const traducirValor = textoDesde.value
 
 
-	if(idiomaDesdeValor != "" && idiomaHastaValor !="" && traducirValor != ""){
+	if (idiomaDesdeValor != "" && idiomaHastaValor != "" && traducirValor != "") {
 		const encodedParams = new URLSearchParams();
 		encodedParams.append("source_language", idiomaDesdeValor);
 		encodedParams.append("target_language", idiomaHastaValor);
@@ -63,13 +63,13 @@ function traducir() {
 
 		fetch('https://text-translator2.p.rapidapi.com/translate', options)
 			.then(response => response.json())
-			.then(response =>  hastaTexto.innerText = response.data.translatedText)
+			.then(response => hastaTexto.innerText = response.data.translatedText)
 			.catch(err => console.error(err));
 	}
 
-	
 
-	
+
+
 }
 
 
