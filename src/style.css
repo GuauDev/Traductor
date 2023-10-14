@@ -14,12 +14,12 @@ main{
     gap: 20px;
 }
 
-.traduccion{
+.translate{
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-.traduccion select{
+.translate select{
     border-radius: 10px;
     height: 50px;
     width: 100%;
@@ -27,7 +27,7 @@ main{
     font-size: 1.1rem;
     font-family: sans-serif;
 }
-.traduccion textarea{
+.translate textarea{
     border-radius: 10px;
     padding: 10px;
     font-family: sans-serif;
