@@ -1,8 +1,8 @@
-const idiomaDesde = document.getElementById('desde')
-const idiomaHasta = document.getElementById('hasta')
+const fromSelectLanguages = document.getElementById('fromSelect')
+const toSelectLanguages = document.getElementById('toSelect')
 
-const textoDesde = document.getElementById('desdeTexto')
-const hastaTexto = document.getElementById('hastaTexto')
+const fromTextArea = document.getElementById('fromTextarea')
+const toTextArea = document.getElementById('toTextarea')
 
 const options = {
 	method: 'GET',
@@ -16,9 +16,9 @@ const options = {
 
 fetch('https://text-translator2.p.rapidapi.com/getLanguages', options)
 	.then(response => response.json())
-	.then(response => response.data.languages.forEach(idioma => {
-		idiomaDesde.innerHTML += `<option value=${idioma.code} >${idioma.name} </option>`;
-		idiomaHasta.innerHTML += `<option value=${idioma.code} >${idioma.name} </option>`;
+	.then(({ data }) => data.languages.forEach(languages => {
+		fromSelectLanguages.innerHTML += `<option value=${languages.code} >${languages.name} </option>`;
+		toSelectLanguages.innerHTML += `<option value=${languages.code} >${languages.name} </option>`;
 	}))
 	.catch(err => console.error(err));
 
@@ -27,27 +27,27 @@ fetch('https://text-translator2.p.rapidapi.com/getLanguages', options)
 
 
 //traducir
-let anteriorTexto = ''
-function rectificar() {
-	if (anteriorTexto != textoDesde.value) {
-		anteriorTexto = textoDesde.value;
-		traducir()
+let lastText = ''
+function update() {
+	if (lastText != textoDesde.value) {
+		lastText = textoDesde.value;
+		translate()
 	}
 }
 
-setInterval(rectificar, 2);
+setInterval(update, 2);
 
-function traducir() {
-	const idiomaDesdeValor = idiomaDesde.value
-	const idiomaHastaValor = idiomaHasta.value
-	const traducirValor = textoDesde.value
+function translate() {
+	const fromTransalateLanguage = fromSelectLanguages.value
+	const toTransalateLanguage = toSelectLanguages.value
+	const toTransalateText = fromTextArea.value
 
 
-	if (idiomaDesdeValor != "" && idiomaHastaValor != "" && traducirValor != "") {
+	if (fromTransalateLanguage != "" && toTransalateLanguage != "" && toTransalateText != "") {
 		const encodedParams = new URLSearchParams();
-		encodedParams.append("source_language", idiomaDesdeValor);
-		encodedParams.append("target_language", idiomaHastaValor);
-		encodedParams.append("text", traducirValor);
+		encodedParams.append("source_language", fromTransalateLanguage);
+		encodedParams.append("target_language", toTransalateLanguage);
+		encodedParams.append("text", toTransalateText);
 
 		const options = {
 			method: 'POST',
@@ -63,7 +63,7 @@ function traducir() {
 
 		fetch('https://text-translator2.p.rapidapi.com/translate', options)
 			.then(response => response.json())
-			.then(response => hastaTexto.innerText = response.data.translatedText)
+			.then(({ data }) => toTextArea.innerText = data.translatedText)
 			.catch(err => console.error(err));
 	}
 
